@@ -15,6 +15,7 @@ int main(void)
 			for (k = j + 1; k < 10; k++)
 			{
 				int num = i * 100 + j * 10 + k;
+
 				putchar(i + '0');
 				putchar(j + '0');
 				putchar(k + '0');
