@@ -7,23 +7,27 @@
 int main(void)
 {
 	int i, j;
+	int a, b, c, d;
 
 	for (i = 0; i < 100; i++)
 	{
-		for (j = i; j < 100; j++)
+		a = i / 10;
+		b = i % 10;
+
+		for (j = 0; j < 100; j++)
 		{
-			int num1 = i / 10, num2 = i % 10;
-			int num3 = j / 10, num4 = j % 10;
+			c = j / 10;
+			d = j % 10;
 
-			if (i != j)
+			if (a < c || (a == c && b < d))
 			{
-				putchar(num1 + '0');
-				putchar(num2 + '0');
-				putchar(' ');
-				putchar(num3 + '0');
-				putchar(num4 + '0');
+				putchar(a + '0');
+				putchar(b + '0');
+				putchar(32);
+				putchar(c + '0');
+				putchar(d + '0');
 
-				if (i != 99 || j != 98)
+				if (!(a == 9 && b == 8))
 				{
 					putchar(',');
 					putchar(' ');
