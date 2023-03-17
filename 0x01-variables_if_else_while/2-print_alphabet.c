@@ -8,8 +8,6 @@ int main(void)
 {
 	for (char ch = 'a'; ch <= 'z'; ch++)
         	putchar(ch);
-        
 	printf("\n");
-	
 	return (0);
 }
