@@ -1,18 +1,9 @@
-#ifndef HEADER_FILE
-#define HEADER_FILE
-
-#include <stdio.h>
-
 /**
- * print_alphabet - prints all lower case english alphabets
+ * File: main.h
+ * Author: Nakuru Wubni
+ * 
+ * Description: Header file containing function declarations
  */
-void print_alphabet(void)
-{
-	char ch;
 
-	for (ch = 'a'; ch <= 'z'; ch++)
-		putchar(ch);
-
-	putchar('\n');
-}
-#endif
+int _putchar(char);
+void print_alphabet(void);
