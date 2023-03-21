@@ -3,6 +3,11 @@
 
 #include <stdio.h>
 
+/**
+ *main - prints English alphabets
+ 
+ * Return: Nothing.
+ */
 void print_alphabet(void)
 {
 	printf("abcdefghijklmnopqrstuvwxyz\n");
