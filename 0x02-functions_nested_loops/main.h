@@ -4,8 +4,7 @@
 #include <stdio.h>
 
 /**
- *main - prints English alphabets
- * Return: Nothing.
+ * print_alphabet - prints all lower case english alphabets
  */
 void print_alphabet(void)
 {
