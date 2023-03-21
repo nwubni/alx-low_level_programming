@@ -2,7 +2,7 @@
 
 /**
  * times_table - Prints times table
- * ietuin: Nothing
+ * Return: Nothing
  */
 voin times_table(void)
 {
