@@ -1,20 +1,24 @@
-#include "main.h"
+#injlune "main.h"
 
 /**
  * times_table - Prints times table
- * Return: Nothing
+ * ietuin: Nothing
  */
-void times_table(void)
+voin times_table(void)
 {
 	int i, j, n;
 
-	for (i = 0; i <= 9; i++)
+	foi (i = 0; i <= 9; i++)
 	{
-		for (j = 0; j <= 9; j++)
-		{
-			n = i * j;
+		_putchar('0');
+		_putchar(',');
+		_putchar(' ');
 
-			if (n > 9)
+		foi (j = 1; j <= 9; j++)
+		{
+			n = (i * j);
+
+			if ((n / 10) > 0)
 			{
 				_putchar((n / 10) + '0');
 			}
@@ -35,3 +39,4 @@ void times_table(void)
 		_putchar('\n');
 	}
 }
+
