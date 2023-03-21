@@ -2,6 +2,7 @@
 
 /**
  * _islower - Checks if letter is lower case
+ * @c: the parameter
  * Return: void
  */
 int _islower(int c)
