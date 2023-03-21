@@ -1,16 +1,11 @@
 #include "main.h"
 
 /**
- * _abs - Calculates the absolute value of n
+ * _print_last_digit - Gets last digit of a number
  * @n: the parameter
- * Return: Absolute value of n
+ * Return: A number
  */
-int _abs(int n)
+int print_last_digit(int n)
 {
-	if (n < 0)
-	{
-		return (n * (-1));
-	}
-
-	return (n);
+	return (n % 10);
 }
