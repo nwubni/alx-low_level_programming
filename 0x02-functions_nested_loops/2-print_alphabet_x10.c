@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_alphabet_x10 - function to  print all lower case 
+ * print_alphabet_x10 - function to  print all lower case
  * English alphabets ten times on a new line
  * Return: void
  */
