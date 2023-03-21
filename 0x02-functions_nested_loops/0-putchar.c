@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 /**
- * Objective - Prints "_putchar" to terminal
- *
- * Return: returns 0
+ * main - task
+ * prints "_putchar"
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
