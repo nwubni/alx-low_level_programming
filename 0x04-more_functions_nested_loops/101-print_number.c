@@ -7,32 +7,33 @@
 */
 void print_number(int n)
 {
-	unsigned int power, m, v;
+	unsigned int m, d, power;
 
-	power = 1;
-	m = n;
-
-	if (m < 0)
+	if (n < 0)
 	{
-		m = n * -1;
 		_putchar('-');
+		m = n * -1;
+	}
+	else
+	{
+		m = n;
 	}
 
-	v = m;
+	d = m;
+	power = 1;
 
-	while (v > 9)
+	while (d > 9)
 	{
+		d /= 10;
 		power *= 10;
-		v /= 10;
 	}
 
-	while (power)
+	while (power >= 1)
 	{
-		v = m / power;
+		d = (m / power) % 10;
 
-		_putchar(v + '0');
+		_putchar(d + '0');
 
-		m -= (v * power);
 		power /= 10;
 	}
 }
