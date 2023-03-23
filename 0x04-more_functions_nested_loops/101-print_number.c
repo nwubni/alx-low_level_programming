@@ -7,14 +7,14 @@
 */
 void print_number(int n)
 {
-	int power, m, v;
+	unsigned int power, m, v;
 
 	power = 1;
 	m = n;
 
 	if (m < 0)
 	{
-		m *= -1;
+		m = n * -1;
 		_putchar('-');
 	}
 
