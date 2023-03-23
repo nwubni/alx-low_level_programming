@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * print_numbers - Takes two parameters and returns their product
+ * print_numbers - See function
  * Return: Nothing
  */
 void print_numbers(void)
