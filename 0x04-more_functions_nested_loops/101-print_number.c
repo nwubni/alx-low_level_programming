@@ -1,5 +1,4 @@
 #include "main.h"
-#include <math.h>
 
 /**
 * print_number- prints number using _putchar
@@ -30,11 +29,10 @@ void print_number(int n)
 	while (power)
 	{
 		v = m / power;
-		
+
 		_putchar(v + '0');
-		
+
 		m -= (v * power);
 		power /= 10;
 	}
-
 }
