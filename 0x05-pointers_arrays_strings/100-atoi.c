@@ -21,10 +21,8 @@ int _atoi(char *s)
 			continue;
 		}
 
-		if (s[i] == '+' || s[i] == ' ' || !(s[i] >= 48 && s[i] <= 57))
-			continue;
-
-		n = (n * 10) + (s[i] - '0');
+		if (s[i] >= 48 && s[i] <= 57)
+			n = (n * 10) + (s[i] - '0');
 	}
 
 	return (n * sign);
