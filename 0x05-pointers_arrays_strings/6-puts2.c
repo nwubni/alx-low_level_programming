@@ -10,7 +10,7 @@ void puts2(char *str)
 {
 	int i, n;
 
-	for (i = 0; s[i] != '\0';)
+	for (i = 0; str[i] != '\0';)
 		i++;
 
 	n = i; /* Length of string */
