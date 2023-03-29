@@ -15,5 +15,5 @@ char *string_toupper(char *s)
 		if (islower(s[i]))
 			s[i] = toupper(s[i]);
 
-	return s;
+	return (s);
 }
