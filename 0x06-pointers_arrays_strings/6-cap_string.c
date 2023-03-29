@@ -3,10 +3,10 @@
 /**
 * cap_sing - Capitalizes every first
 * letter of word in s
-* @s: Input sing
-* Return: sing
+* @s: Input string
+* Return: Stringing
 */
-char *cap_sing(char *s)
+char *cap_string(char *s)
 {
 	int i, cap;
 
@@ -27,6 +27,8 @@ char *cap_sing(char *s)
 		    s[i] == '(' || s[i] == ')' || s[i] == '{' ||
 		    s[i] == '}')
 			cap = 1;
+		else
+			cap = 0;
 	}
 
 	return (s);
