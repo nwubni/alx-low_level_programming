@@ -2,7 +2,7 @@
 #include <string.h>
 
 /**
-* _strncpy - Compares two strings
+* _strcmp - Compares two strings
 * @s1: First string
 * @s2: Second string
 * Return: Integer
