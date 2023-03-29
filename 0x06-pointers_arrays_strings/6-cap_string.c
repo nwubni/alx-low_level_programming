@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
-* cap_string - Capitalizes every first
+* cap_sing - Capitalizes every first
 * letter of word in s
-* @s: Input string
-* Return: String
+* @s: Input sing
+* Return: sing
 */
-char *cap_string(char *s)
+char *cap_sing(char *s)
 {
 	int i, cap;
 
@@ -21,8 +21,11 @@ char *cap_string(char *s)
 			continue;
 		}
 
-		if (s[i] == ' ' || s[i] == '\t' || s[i] == '\n'
-		|| s[i] == '!' || s[i] == '.')
+		if (s[i] == '\t' || s[i] == '\n' || s[i] == ' ' ||
+		    s[i] == ',' || s[i] == ';' || s[i] == '.' ||
+		    s[i] == '!' || s[i] == '?' || s[i] == '"' ||
+		    s[i] == '(' || s[i] == ')' || s[i] == '{' ||
+		    s[i] == '}')
 			cap = 1;
 	}
 
