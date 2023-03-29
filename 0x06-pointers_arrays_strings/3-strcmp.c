@@ -1,5 +1,4 @@
 #include "main.h"
-#include <string.h>
 
 /**
 * _strcmp - Compares two strings
@@ -9,14 +8,14 @@
 */
 int _strcmp(char *s1, char *s2)
 {
-	int p = 0;
+	int d = 0;
 
 	while (*s1 && *s2 && *s1 == *s2)
 	{
-		p = (*s1 - *s2);
 		s1++;
 		s2++;
+		d = (*s1 - *s2);
 	}
 
-	return (p);
+	return (d);
 }
