@@ -21,7 +21,7 @@ char *cap_string(char *s)
 			continue;
 		}
 
-		if (s[i] == ' ' || s[i] == '\t' || s[i] == '\n' 
+		if (s[i] == ' ' || s[i] == '\t' || s[i] == '\n'
 		|| s[i] == '!' || s[i] == '.')
 			cap = 1;
 	}
