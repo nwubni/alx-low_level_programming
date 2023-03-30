@@ -8,7 +8,8 @@
 * @size: Buffer size
 * Return: Void
 */
-void print_buffer(char *b, int size) {
+void print_buffer(char *b, int size)
+{
 	if (size <= 0)
 	{
 		printf("\n");
@@ -21,7 +22,7 @@ void print_buffer(char *b, int size) {
 	{
 		printf("%08x ", i);
 
-		for (j = 0; j < 10 && i + j < size; j++)
+		for (j = 0; j < 10 && (i + j) < size; j++)
 			printf("%02x ", (unsigned char)b[i+j]);
 
 		for (; j < 10; j++)
@@ -29,7 +30,7 @@ void print_buffer(char *b, int size) {
 
 		printf(" ");
 
-		for (j = 0; j < 10 && i + j < size; j++)
+		for (j = 0; j < 10 && (i + j) < size; j++)
 		{
 			char c = b[i+j];
 
