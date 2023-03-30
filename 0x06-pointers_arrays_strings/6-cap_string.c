@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
-* cap_sing - Capitalizes every first
+* cap_string - Capitalizes every first
 * letter of word in s
 * @s: Input string
-* Return: Stringing
+* Return: String
 */
 char *cap_string(char *s)
 {
@@ -15,10 +15,7 @@ char *cap_string(char *s)
 	for (i = 0; s[i] != '\0'; i++)
 	{
 		if (cap && s[i] >= 'a' && s[i] <= 'z')
-		{
 			s[i] -= 32;
-			cap = 0;
-		}
 
 		if (s[i] == '\t' || s[i] == '\n' || s[i] == ' ' ||
 		    s[i] == ',' || s[i] == ';' || s[i] == '.' ||
