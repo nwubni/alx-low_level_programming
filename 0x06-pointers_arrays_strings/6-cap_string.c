@@ -18,7 +18,6 @@ char *cap_string(char *s)
 		{
 			s[i] -= 32;
 			cap = 0;
-			continue;
 		}
 
 		if (s[i] == '\t' || s[i] == '\n' || s[i] == ' ' ||
