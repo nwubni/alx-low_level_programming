@@ -37,7 +37,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	r[i] = '\0';
 	size_r = i;
 
-	for (i = 0; i < (size_r / 2); i++)
+	for (i = 0; i <= (size_r / 2); i++)
 	{
 		carry = r[i];
 		r[i] = r[size_r - i - 1];
