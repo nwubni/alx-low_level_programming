@@ -7,26 +7,28 @@
 */
 void print_number(int n)
 {
-	int m = 0, zeros = 0, neg = 0, d;
+	unsigned int m = 0, zeros = 0, d, n2;
 
 	if (n < 0)
 	{
-		neg = 1;
-		n *= -1;
+		_putchar('-');
+		n2 = n * -1;
+	}
+	else
+	{
+		n2 = n;
 	}
 
-	while (n)
+	while (n2)
 	{
-		d = n % 10;
+		d = n2 % 10;
 		m = (m * 10) + d;
-		n /= 10;
+		n2 /= 10;
 
 		if (m == 0)
 			zeros++;
 	}
 
-	if (neg)
-		_putchar('-');
 	if (m == 0)
 		_putchar('0');
 
