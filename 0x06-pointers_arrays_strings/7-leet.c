@@ -17,13 +17,13 @@ char *leet(char *s)
 
 		if (ch == 'a')
 			s[i] = '4';
-		else if (ch == 'e')
+		if (ch == 'e')
 			s[i] = '3';
-		else if (ch == 'o')
+		if (ch == 'o')
 			s[i] = '0';
-		else if (ch == 't')
+		if (ch == 't')
 			s[i] = '7';
-		else if (ch == 'l')
+		if (ch == 'l')
 			s[i] = '1';
 
 	}
