@@ -12,7 +12,7 @@
 char *_strstr(char *haystack, char *needle)
 {
 	if (*needle == '\0')
-		return haystack;
+		return (haystack);
 
 	unsigned int i, j, k, h_len, n_len;
 
