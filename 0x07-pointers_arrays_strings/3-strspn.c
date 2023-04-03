@@ -7,13 +7,13 @@
  * @accept: Prefix parameter.
  * Return: Integer.
  */
- 
 unsigned int _strspn(char *s, char *accept)
 {
 	unsigned int count = 0;
 	char *p = s;
 
-	while (*p != '\0' && strchr(accept, *p) != NULL) {
+	while (*p != '\0' && strchr(accept, *p) != NULL)
+	{
 		count++;
 		p++;
 	}
