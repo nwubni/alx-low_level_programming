@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-* print_diagsums: Prints diagonal sums
+* print_diagsums - Prints diagonal sums
 * @a: Array parameter
 * @size: Array dimension
 * Return: void
