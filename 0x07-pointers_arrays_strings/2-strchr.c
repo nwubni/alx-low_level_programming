@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
-* _strchr - Find firs c in s
-* @s: Input string parameter
-* @c: Character to find
-* Return: Pointer to first c in s
-*/
+ * _strchr - Finds c in s
+ * @s: String
+ * @c: Character to find
+ * Return: Pointer to the first occurrence of the c
+ */
 
 char *_strchr(char *s, char c)
 {
@@ -16,9 +16,6 @@ char *_strchr(char *s, char c)
 
 		s++;
 	}
-
-	if (c == '\0')
-		return (s);
 
 	return (NULL);
 }
