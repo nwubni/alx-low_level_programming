@@ -3,7 +3,7 @@
 /**
 * set_string - Sets one string to another
 * @s: String to replace
-* to: Replace value
+* @to: Replace value
 * Return: void
 */
 
