@@ -4,7 +4,7 @@
 * _strchr - Find firs c in s
 * @s: Input string parameter
 * @c: Character to find
-* Return: String
+* Return: Pointer to first c in s
 */
 
 char *_strchr(char *s, char c)
@@ -13,7 +13,7 @@ char *_strchr(char *s, char c)
 
 	for (i = 0; s[i] != '\0'; i++)
 		if (s[i] == c)
-			return (s + 1);
+			return (s + i);
 
 	return (NULL);
 }
