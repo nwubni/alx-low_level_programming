@@ -10,16 +10,15 @@
 
 void print_diagsums(int *a, int size)
 {
-	unsigned int i, left = 0, right = size - 1;
-	int left_sum = 0, right_sum = 0;
+	int i, left_sum = 0, right_sum = 0;
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < (size * size); i++)
 	{
-		left_sum += a[i * size + left];
-		right_sum += a[i * size + right];
+		if (i % (size + 1) == 0)
+			left_sum += *(a + i);
 
-		left++;
-		right--;
+		if (i % (size - 1) == 0 && i != 0 && i < size * size - 1)
+			right_sum += *(a + i);
 	}
 
 	printf("%d, %d\n", left_sum, right_sum);
