@@ -13,6 +13,7 @@ void _print_rev_recursion(char *s)
 		return;
 
 	char c = *s;
+
 	s++;
 
 	_print_rev_recursion(s);
