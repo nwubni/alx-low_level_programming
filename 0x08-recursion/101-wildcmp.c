@@ -10,7 +10,7 @@
 int wildcmp(char *s1, char *s2)
 {
 	int i;
-	
+
 	/* If both strings are empty, they're identical */
 	if (*s1 == '\0' && *s2 == '\0')
 	return (1);
