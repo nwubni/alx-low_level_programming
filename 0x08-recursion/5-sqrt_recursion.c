@@ -2,29 +2,20 @@
 
 /**
 * sqrt_helper - helper function to calculate square root
-* using binary search
 * @n: Value to find square root
-* @low: Lower bound
-* @high: Higher bound
+* @i: Iterator
 * Return: Integer
 */
 
-int sqrt_helper(int n, int low, int high)
+int sqrt_helper(int n, int i)
 {
-	int mid;
-
-	if (low > high)
+	if (i * i > n)
 		return (-1);
 
-	mid = (low + high) / 2;
+	if (i * i == n)
+		return (i);
 
-	if (mid * mid == n)
-		return (mid);
-
-	if (mid * mid < n)
-		return (sqrt_helper(n, mid + 1, high));
-
-	return (sqrt_helper(n, low, mid - 1));
+	return (sqrt_helper(n, i+ 1));
 }
 
 /**
@@ -35,5 +26,14 @@ int sqrt_helper(int n, int low, int high)
 
 int _sqrt_recursion(int n)
 {
+	if (n < 0)
+		return (-1);
+
+	if (n == 0)
+		return (0);
+
+	if (n == 1)
+		return (1);
+
 	return (sqrt_helper(n, 1, n));
 }
