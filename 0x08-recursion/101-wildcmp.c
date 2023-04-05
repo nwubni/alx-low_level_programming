@@ -15,18 +15,15 @@ int wildcmp(char *s1, char *s2)
 	if (*s1 == '\0' && *s2 == '\0')
 	return (1);
 
-	/* If the current character of s2 is *, recursively check all possible matches */
 	if (*s2 == '*')
 	{
 		/* Skip over consecutive * characters in s2 */
 		while (*(s2 + 1) == '*')
 			s2++;
 
-		/* If s2 ends with *, it matches anything, so the strings are identical */
 		if (*(s2 + 1) == '\0')
 			return (1);
 
-		/* Check all possible matches of the remaining s2 substring against s1 */
 		i = 0;
 
 		while (*(s1 + i) != '\0')
@@ -37,11 +34,9 @@ int wildcmp(char *s1, char *s2)
 			i++;
 		}
 
-		/* If no matches were found, the strings aren't identical */
 		return (0);
 	}
 
-	/* If the current characters of s1 and s2 match, check the next characters */
 	if (*s1 == *s2)
 		return (wildcmp(s1 + 1, s2 + 1));
 
