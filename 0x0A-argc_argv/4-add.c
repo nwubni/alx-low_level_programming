@@ -6,7 +6,7 @@
 * main - Prints sum of program arguments
 * @argc: Argument count
 * @argv: Argument vector
-* Return: Integer- Success(0), Error(1)
+* Return: Success(0), Error(1)
 */
 
 int main(int argc, char *argv[])
@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 	{
 		for (j = 0; argv[i][j] != '\0'; j++)
 		{
-			if (!isdigit(argv[i][0]))
+			if (!isdigit(argv[i][j]))
 			{
 				printf("Error\n");
 				return (1);
