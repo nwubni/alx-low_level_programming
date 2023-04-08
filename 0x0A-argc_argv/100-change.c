@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 	{
 		if (amount >= denum[i])
 		{
-		while (amount >= denum[i])
+			while (amount >= denum[i])
 			{
 				amount -= denum[i];
 				coins++;
