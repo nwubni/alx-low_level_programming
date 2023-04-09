@@ -4,6 +4,7 @@
 * _strncat - Joins n characters from src to dest
 * @dest: Destination string
 * @src: Source string
+* @n: Number of characters to join
 * Return: String
 */
 
