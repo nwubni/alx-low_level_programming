@@ -16,23 +16,23 @@ char **strtow(char *str)
 	if (str == NULL || strlen(str) == 0)
 		return (NULL);
 
-	char **words = malloc((MAX_WORDS) * sizeof(char *));
+	char **words = malloc(MAX_WORDS * sizeof(char *));
 
 	if (words == NULL)
 		return (NULL);
 
 	for (i = 0; i < MAX_WORDS; i++)
 	{
-		words[i] = malloc(MAX_WORD_LEN);
+	words[i] = malloc(MAX_WORD_LEN);
 
-		if (words[i] == NULL)
-		{
-			for (j = 0; j < i; j++)
-				free(words[j]);
+	if (words[i] == NULL)
+	{
+		for (j = 0; j < i; j++)
+			free(words[j]);
 
-			free(words);
-			return (NULL);
-		}
+		free(words);
+		return (NULL);
+	}
 	}
 
 	num_words = 0;
@@ -40,8 +40,8 @@ char **strtow(char *str)
 
 	while (str[i] != '\0')
 	{
-	while (str[i] == ' ' || str[i] == '\t'
-		|| str[i] == '\n')
+	while (str[i] == ' ' ||
+		str[i] == '\t' || str[i] == '\n')
 		i++;
 
 	if (str[i] == '\0')
@@ -49,8 +49,8 @@ char **strtow(char *str)
 
 	j = 0;
 
-	while (str[i] != ' ' && str[i] != '\t' &&
-		str[i] != '\n' && str[i] != '\0')
+	while (str[i] != ' ' && str[i] != '\t'
+		&& str[i] != '\n' && str[i] != '\0')
 	{
 		if (j < MAX_WORD_LEN)
 		{
