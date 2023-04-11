@@ -54,7 +54,7 @@ char *extract_word(char *str, int start, int end)
 char **split_words(char *str, int num_words)
 {
 	char **words;
-	int i = 0, k = 0, start = 0;
+	int j, i = 0, k = 0, start = 0;
 
 	words = malloc(sizeof(char *) * (num_words + 1));
 
@@ -73,7 +73,7 @@ char **split_words(char *str, int num_words)
 
 			if (!words[k])
 			{
-				for (int j = 0; j < k; j++)
+				for (j = 0; j < k; j++)
 					free(words[j]);
 
 				free(words);
