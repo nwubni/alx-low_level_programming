@@ -55,11 +55,12 @@ char **strtow(char *str)
 	const int MAX_WORDS = 1000;
 	const int MAX_WORD_LEN = 1000;
 	int i, j;
+	char **words;
 
 	if (str == NULL || strlen(str) == 0)
 		return (NULL);
 
-	char **words = malloc(MAX_WORDS * sizeof(char *));
+	words = malloc(MAX_WORDS * sizeof(char *));
 
 	if (words == NULL)
 		return (NULL);
