@@ -2,7 +2,11 @@
 #include <stdlib.h>
 
 /**
+* strtow - Prints words in string on newlines
+* @string: String parameter
+* Return: Array of strings
 */
+
 char **strtow(char *str)
 {
 	const int MAX_WORDS = 1000;
