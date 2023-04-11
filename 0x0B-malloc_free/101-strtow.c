@@ -1,11 +1,12 @@
 #include "main.h"
 #include <stdlib.h>
+#include <ctype.h>
 
 /**
-* strtow - Prints words in string on newlines
-* @str: String parameter
-* Return: Array of strings
-*/
+ * strtow - Prints words in string on newlines
+ * @str: String parameter
+ * Return: Array of strings
+ */
 
 char **strtow(char *str)
 {
@@ -23,16 +24,16 @@ char **strtow(char *str)
 
 	for (i = 0; i < MAX_WORDS; i++)
 	{
-	words[i] = malloc(MAX_WORD_LEN);
+		words[i] = malloc(MAX_WORD_LEN);
 
-	if (words[i] == NULL)
-	{
+		if (words[i] == NULL)
+		{
 		for (j = 0; j < i; j++)
 			free(words[j]);
 
 		free(words);
 		return (NULL);
-	}
+		}
 	}
 
 	num_words = 0;
@@ -40,8 +41,7 @@ char **strtow(char *str)
 
 	while (str[i] != '\0')
 	{
-	while (str[i] == ' ' ||
-		str[i] == '\t' || str[i] == '\n')
+	while (isspace(str[i]))
 		i++;
 
 	if (str[i] == '\0')
@@ -49,16 +49,16 @@ char **strtow(char *str)
 
 	j = 0;
 
-	while (str[i] != ' ' && str[i] != '\t'
-		&& str[i] != '\n' && str[i] != '\0')
+	while (!isspace(str[i]) && str[i] != '\0')
 	{
-		if (j < MAX_WORD_LEN)
-		{
-			words[num_words][j] = str[i];
-			j++;
-		}
 
-		i++;
+	if (j < MAX_WORD_LEN)
+	{
+		words[num_words][j] = str[i];
+		j++;
+	}
+
+	i++;
 	}
 
 	words[num_words][j] = '\0';
