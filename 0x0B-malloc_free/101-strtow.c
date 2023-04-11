@@ -3,6 +3,47 @@
 #include <ctype.h>
 
 /**
+* helper - Breaks solution into modules
+* @str: String parameter
+* @words: Words parameter
+* Return: Void
+*/
+
+void helper(char *str, char **words)
+{
+	const int MAX_WORD_LEN = 1000;
+	int num_words = 0;
+	int i = 0, j;
+
+	while (str[i] != '\0')
+	{
+		while (isspace(str[i]))
+			i++;
+
+		if (str[i] == '\0')
+			break;
+
+		j = 0;
+
+		while (!isspace(str[i]) && str[i] != '\0')
+		{
+			if (j < MAX_WORD_LEN)
+			{
+				words[num_words][j] = str[i];
+				j++;
+			}
+
+			i++;
+		}
+
+		words[num_words][j] = '\0';
+		num_words++;
+	}
+
+	words[num_words] = NULL;
+}
+
+/**
  * strtow - Prints words in string on newlines
  * @str: String parameter
  * Return: Array of strings
@@ -12,7 +53,7 @@ char **strtow(char *str)
 {
 	const int MAX_WORDS = 1000;
 	const int MAX_WORD_LEN = 1000;
-	int i, j, num_words;
+	int i, j;
 
 	if (str == NULL || strlen(str) == 0)
 		return (NULL);
@@ -28,44 +69,15 @@ char **strtow(char *str)
 
 		if (words[i] == NULL)
 		{
-		for (j = 0; j < i; j++)
-			free(words[j]);
+			for (j = 0; j < i; j++)
+				free(words[j]);
 
-		free(words);
-		return (NULL);
+			free(words);
+			return (NULL);
 		}
 	}
 
-	num_words = 0;
-	i = 0;
-
-	while (str[i] != '\0')
-	{
-	while (isspace(str[i]))
-		i++;
-
-	if (str[i] == '\0')
-		break;
-
-	j = 0;
-
-	while (!isspace(str[i]) && str[i] != '\0')
-	{
-
-	if (j < MAX_WORD_LEN)
-	{
-		words[num_words][j] = str[i];
-		j++;
-	}
-
-	i++;
-	}
-
-	words[num_words][j] = '\0';
-	num_words++;
-	}
-
-	words[num_words] = NULL;
+	helper(str, words);
 
 	return (words);
 }
