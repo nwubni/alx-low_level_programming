@@ -40,7 +40,7 @@ char **strtow(char *str)
 
 	while (str[i] != '\0')
 	{
-		while (str[i] == ' ' || str[i] == '\t' 
+		while (str[i] == ' ' || str[i] == '\t'
 			|| str[i] == '\n')
 			i++;
 
@@ -49,7 +49,7 @@ char **strtow(char *str)
 
 		j = 0;
 
-		while (str[i] != ' ' && str[i] != '\t' && 
+		while (str[i] != ' ' && str[i] != '\t' &&
 			str[i] != '\n' && str[i] != '\0')
 		{
 			if (j < MAX_WORD_LEN)
