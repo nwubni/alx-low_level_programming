@@ -1,85 +1,86 @@
 #include "main.h"
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 
 /**
-* helper - Breaks solution into modules
-* @str: String parameter
-* @words: Words parameter
-* Return: Void
-*/
-
-void helper(char *str, char **words)
+ * count_words - Gets the number of words in a string
+ * @str: string to evaluate
+ * Return: Number of words
+ */
+int count_words(char *str)
 {
-	const int MAX_WORD_LEN = 1000;
-	int num_words = 0;
-	int i = 0, j;
+	int i, words = 0, in_word = 0;
 
-	while (str[i] != '\0')
+	for (i = 0; str[i]; i++)
 	{
-		while (isspace(str[i]))
-			i++;
-
-		if (str[i] == '\0')
-			break;
-
-		j = 0;
-
-		while (!isspace(str[i]) && str[i] != '\0')
+		if (!in_word && str[i] != ' ')
 		{
-			if (j < MAX_WORD_LEN)
-			{
-				words[num_words][j] = str[i];
-				j++;
-			}
-
-			i++;
+			in_word = 1;
+			words++;
 		}
-
-		words[num_words][j] = '\0';
-		num_words++;
+		else if (in_word && str[i] == ' ')
+		{
+			in_word = 0;
+		}
 	}
 
-	words[num_words] = NULL;
+	return words;
 }
 
 /**
- * strtow - Prints words in string on newlines
- * @str: String parameter
+ * strtow - Splits string into words
+ * @str: String parameter to split
  * Return: Array of strings
  */
-
 char **strtow(char *str)
 {
-	const int MAX_WORDS = 1000;
-	const int MAX_WORD_LEN = 1000;
-	int i, j;
 	char **words;
+	int i, j, k, len, num_words, start, end;
 
-	if (str == NULL || strlen(str) == 0)
+	if (!str || !*str)
 		return (NULL);
 
-	words = malloc(MAX_WORDS * sizeof(char *));
+	num_words = count_words(str);
 
-	if (words == NULL)
+	if (!num_words)
 		return (NULL);
 
-	for (i = 0; i < MAX_WORDS; i++)
+	words = malloc(sizeof(char *) * (num_words + 1));
+
+	if (!words)
+		return (NULL);
+
+	for (i = 0, k = 0; str[i]; i++)
 	{
-		words[i] = malloc(MAX_WORD_LEN);
-
-		if (words[i] == NULL)
+		if (str[i] != ' ')
 		{
-			for (j = 0; j < i; j++)
-				free(words[j]);
+			start = i;
+			for (j = start; str[j] && str[j] != ' ';)
+				j++;
 
-			free(words);
-			return (NULL);
+			end = j;
+			len = end - start;
+			words[k] = malloc(sizeof(char) * (len + 1));
+
+			if (!words[k])
+			{
+				for (i = 0; i < k; i++)
+					free(words[i]);
+					
+				free(words);
+				return (NULL);
+			}
+			
+			strncpy(words[k], str + start, len);
+
+			words[k][len] = '\0';
+			k++;
+			i = end - 1;
 		}
 	}
 
-	helper(str, words);
+	words[k] = NULL;
 
 	return (words);
 }
+
