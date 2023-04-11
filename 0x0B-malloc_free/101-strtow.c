@@ -22,6 +22,13 @@ int count_words(char *str)
 	return (num_words);
 }
 
+/**
+ * extract_word - Extracts word from string
+ * @str: String parameter
+ * @start: Extraction start point
+ * @end: Extraction end point
+ * Return: String
+ */
 char *extract_word(char *str, int start, int end)
 {
 	char *word;
