@@ -40,29 +40,29 @@ char **strtow(char *str)
 
 	while (str[i] != '\0')
 	{
-		while (str[i] == ' ' || str[i] == '\t'
-			|| str[i] == '\n')
-			i++;
+	while (str[i] == ' ' || str[i] == '\t'
+		|| str[i] == '\n')
+		i++;
 
-		if (str[i] == '\0')
-			break;
+	if (str[i] == '\0')
+		break;
 
-		j = 0;
+	j = 0;
 
-		while (str[i] != ' ' && str[i] != '\t' &&
-			str[i] != '\n' && str[i] != '\0')
+	while (str[i] != ' ' && str[i] != '\t' &&
+		str[i] != '\n' && str[i] != '\0')
+	{
+		if (j < MAX_WORD_LEN)
 		{
-			if (j < MAX_WORD_LEN)
-			{
-				words[num_words][j] = str[i];
-				j++;
-			}
-
-			i++;
+			words[num_words][j] = str[i];
+			j++;
 		}
 
-		words[num_words][j] = '\0';
-		num_words++;
+		i++;
+	}
+
+	words[num_words][j] = '\0';
+	num_words++;
 	}
 
 	words[num_words] = NULL;
