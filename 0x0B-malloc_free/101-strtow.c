@@ -3,7 +3,7 @@
 
 /**
 * strtow - Prints words in string on newlines
-* @string: String parameter
+* @str: String parameter
 * Return: Array of strings
 */
 
@@ -40,7 +40,8 @@ char **strtow(char *str)
 
 	while (str[i] != '\0')
 	{
-		while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
+		while (str[i] == ' ' || str[i] == '\t' 
+			|| str[i] == '\n')
 			i++;
 
 		if (str[i] == '\0')
@@ -48,7 +49,8 @@ char **strtow(char *str)
 
 		j = 0;
 
-		while (str[i] != ' ' && str[i] != '\t' && str[i] != '\n' && str[i] != '\0')
+		while (str[i] != ' ' && str[i] != '\t' && 
+			str[i] != '\n' && str[i] != '\0')
 		{
 			if (j < MAX_WORD_LEN)
 			{
