@@ -1,4 +1,5 @@
 include "dog.h"
+#include <string.h>
 
 /**
 * new_dog - Function initializes a dog_t
@@ -10,11 +11,29 @@ include "dog.h"
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t d;
+	dog_t *dog;
 
-	d.name = name;
-	d.age = age;
-	d.owner = owner
+	dog = malloc(sizeof(dog_t));
 
-	return (&d);
+	if (dog == NULL)
+		return (NULL);
+
+	dog->name = malloc(strlen(name) + 1);
+	dog->owner = malloc(strlen(owner) + 1);
+
+	if (dog->name == NULL || dog->owner == NULL)
+	{
+		free(dog->name);
+		free(dog->owner);
+		free(dog);
+
+		return (NULL);
+	}
+
+	strcpy(dog->name, name);
+	strcpy(dog->owner, owner);
+
+	dog->age = age;
+
+	return (dog);
 }
