@@ -2,6 +2,17 @@
 #include <stdarg.h>
 
 /**
+* check_format - Checks format type
+* @c: Character
+* Return: Integer
+*/
+
+int check_format(char c)
+{
+	return (c == 'c' || c == 'i' || c == 'f' || c == 's');
+}
+
+/**
 * print_all - Function prints anything
 * @format: String formatter
 * Return: void
@@ -38,14 +49,7 @@ void print_all(const char * const format, ...)
 				break;
 		}
 
-		if (format[i + 1] != '\0'
-		&&
-		(format[i] == 'c' ||
-		format[i] == 'i' ||
-		format[i] == 'f' ||
-		format[i] == 's'
-		)
-		)
+		if (format[i + 1] != '\0' && check_format(format[i]))
 			printf(", ");
 
 		i++;
