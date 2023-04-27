@@ -2,7 +2,7 @@
 
 /**
 * print_list - Prints a linked list
-* @list_t: Head of linked list
+* @h: Head of linked list
 * Return: Size of linked list
 */
 
