@@ -9,14 +9,9 @@
 
 int get_bit(unsigned long int n, unsigned int index)
 {
-	while (n && index)
-	{
-		n >>= 1;
-		index--;
-	}
-
-	if (!n && index)
+	if (index > 63)
 		return (-1);
 
-	return (n & 1);
+	/* Shifts index bits of n to the right*/
+	return ((n >> index) & 1);
 }
