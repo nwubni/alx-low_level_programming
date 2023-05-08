@@ -7,7 +7,8 @@
 * Return: Integer to indicate success
 */
 
-int create_file(const char *filename, char *text_content) {
+int create_file(const char *filename, char *text_content)
+{
 	int fd, len = 0, wr;
 
 	if (filename == NULL)
