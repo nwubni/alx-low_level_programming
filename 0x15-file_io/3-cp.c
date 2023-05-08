@@ -39,20 +39,21 @@ int copy_file(const char *src_file, const char *dest_file)
 
 	while ((num_read = read(src_fd, buffer, sizeof(buffer))) > 0)
 	{
+		if (num_read == -1)
+		{
+			close(src_fd);
+			close(dest_fd);
+			handle_error("Can't read from source file", 98);
+		}
+
 		num_written = write(dest_fd, buffer, num_read);
+
 		if (num_written != num_read)
 		{
 			close(src_fd);
 			close(dest_fd);
-			handle_error("Write error", 99);
+			handle_error("Can't write to destination file", 99);
 		}
-	}
-
-	if (num_read == -1)
-	{
-		close(src_fd);
-		close(dest_fd);
-		handle_error("Read error", 98);
 	}
 
 	if (close(src_fd) == -1 || close(dest_fd) == -1)
