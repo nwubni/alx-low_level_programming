@@ -6,10 +6,10 @@
 * Return: void
 */
 
-void handle_error(const char *msg)
+void handle_error(const char *msg, int exit_code = )
 {
 	fprintf(stderr, "Error: %s\n", msg);
-	exit(1);
+	exit(exit_code);
 }
 
 /**
@@ -33,7 +33,7 @@ int copy_file(const char *src_file, const char *dest_file)
 	if (dest_fd == -1)
 	{
 		close(src_fd);
-		handle_error("Can't write to destination file");
+		handle_error("Can't write to destination file", 99);
 	}
 
 	while ((num_read = read(src_fd, buffer, sizeof(buffer))) > 0)
@@ -43,7 +43,7 @@ int copy_file(const char *src_file, const char *dest_file)
 		{
 			close(src_fd);
 			close(dest_fd);
-			handle_error("Write error");
+			handle_error("Write error", 99);
 		}
 	}
 
@@ -55,7 +55,7 @@ int copy_file(const char *src_file, const char *dest_file)
 	}
 
 	if (close(src_fd) == -1 || close(dest_fd) == -1)
-		handle_error("Can't close file descriptor");
+		handle_error("Can't close fd");
 
 	return (0);
 }
@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
 	if (argc != 3)
 	{
 		fprintf(stderr, "Usage: cp file_from file_to\n");
-		return (1);
+		exit(97);
 	}
 
 	copy_file(argv[1], argv[2]);
