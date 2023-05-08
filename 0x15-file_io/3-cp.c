@@ -7,7 +7,7 @@
 * Return: void
 */
 
-void handle_error(const char *msg, int exit_code = 98)
+void handle_error(const char *msg, int exit_code)
 {
 	fprintf(stderr, "Error: %s\n", msg);
 	exit(exit_code);
@@ -28,7 +28,7 @@ int copy_file(const char *src_file, const char *dest_file)
 
 	src_fd = open(src_file, O_RDONLY);
 	if (src_fd == -1)
-		handle_error("Can't read from source file");
+		handle_error("Can't read from source file", 98);
 
 	dest_fd = open(dest_file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (dest_fd == -1)
@@ -52,11 +52,11 @@ int copy_file(const char *src_file, const char *dest_file)
 	{
 		close(src_fd);
 		close(dest_fd);
-		handle_error("Read error");
+		handle_error("Read error", 98);
 	}
 
 	if (close(src_fd) == -1 || close(dest_fd) == -1)
-		handle_error("Can't close fd");
+		handle_error("Can't close fd", 100);
 
 	return (0);
 }
