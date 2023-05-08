@@ -14,18 +14,6 @@ void handle_error(const char *msg, int exit_code)
 }
 
 /**
-* close_error - Displays close file error message
-* @fd: File code
-* Return: void
-*/
-
-void close_error(int fd)
-{
-	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-	exit(100);
-}
-
-/**
 * copy_file - Copies file from source to destination
 * @src_file: Source file
 * @dest_file: Destination file
@@ -34,7 +22,7 @@ void close_error(int fd)
 
 int copy_file(const char *src_file, const char *dest_file)
 {
-	int src_fd, dest_fd, close;
+	int src_fd, dest_fd;
 	ssize_t num_read, num_written;
 	char buffer[1024];
 
@@ -59,6 +47,7 @@ int copy_file(const char *src_file, const char *dest_file)
 		}
 
 		num_written = write(dest_fd, buffer, num_read);
+
 		if (num_written != num_read)
 		{
 			close(src_fd);
@@ -67,12 +56,9 @@ int copy_file(const char *src_file, const char *dest_file)
 		}
 	}
 
-	close = close(src_fd);
-	if (close == -1)
-		close_error(src_fd);
-	close = close(dest_fd);
-	if (close == -1)
-		close_error(dest_fd);
+	if (close(src_fd) == -1 || close(dest_fd) == -1)
+		handle_error("Can't close fd", 100);
+
 	return (0);
 }
 
