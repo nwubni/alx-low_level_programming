@@ -70,11 +70,9 @@ int copy_file(const char *src_file, const char *dest_file)
 	close = close(src_fd);
 	if (close == -1)
 		close_error(src_fd);
-
 	close = close(dest_fd);
 	if (close == -1)
 		close_error(dest_fd);
-
 	return (0);
 }
 
