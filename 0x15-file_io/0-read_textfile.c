@@ -31,7 +31,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	free(ch);
 
-	if (bytes_read != letters && bytes_written != letters)
+	if (bytes_read != (ssize_t)letters && bytes_written != (ssize_t)letters)
 		return (0);
 
 	close(fd);
