@@ -56,15 +56,15 @@ int copy_file(const char *src_file, const char *dest_file)
 	}
 
 	close = close(src_fd);
-	if (clos e== -1)
-	{		
+	if (close == -1)
+	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", src_fd);
 		exit(100);
 	}
 
 	close = close(dest_fd);
 	if (close == -1)
-	{		
+	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", dest_fd);
 		exit(100);
 	}
