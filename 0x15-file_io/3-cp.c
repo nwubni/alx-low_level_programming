@@ -7,7 +7,8 @@
 * Return: void
 */
 
-void print_error(const char *message, const char *arg) {
+void print_error(const char *message, const char *arg)
+{
 	dprintf(STDERR_FILENO, message, arg);
 	exit(EXIT_FAILURE);
 }
@@ -19,7 +20,8 @@ void print_error(const char *message, const char *arg) {
 * Return: Integer
 */
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
 	int fd_from, fd_to, nread, nwrite;
 	const int BUF_SIZE = 1024;
 	char buffer[BUF_SIZE];
