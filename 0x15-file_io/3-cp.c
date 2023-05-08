@@ -14,6 +14,18 @@ void handle_error(const char *msg, int exit_code)
 }
 
 /**
+* close_error - Displays close file error message
+* @fd: File code
+* Return: void
+*/
+
+void close_error(int fd)
+{
+	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+	exit(100);
+}
+
+/**
 * copy_file - Copies file from source to destination
 * @src_file: Source file
 * @dest_file: Destination file
@@ -57,17 +69,11 @@ int copy_file(const char *src_file, const char *dest_file)
 
 	close = close(src_fd);
 	if (close == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", src_fd);
-		exit(100);
-	}
+		close_error(src_fd);
 
 	close = close(dest_fd);
 	if (close == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", dest_fd);
-		exit(100);
-	}
+		close_error(dest_fd);
 
 	return (0);
 }
