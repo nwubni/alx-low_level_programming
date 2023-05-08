@@ -3,10 +3,11 @@
 /**
 * handle_error - Displays error message
 * @msg: Error message
+* @exit_code: Exit code
 * Return: void
 */
 
-void handle_error(const char *msg, int exit_code = )
+void handle_error(const char *msg, int exit_code = 98)
 {
 	fprintf(stderr, "Error: %s\n", msg);
 	exit(exit_code);
