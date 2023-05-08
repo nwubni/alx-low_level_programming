@@ -19,40 +19,45 @@ void handle_error(const char *msg)
 * Return: Integer
 */
 
-int copy_file(const char *src_file, const char *dest_file) {
-    int src_fd, dest_fd;
-    ssize_t num_read, num_written;
-    char buffer[1024];
+int copy_file(const char *src_file, const char *dest_file)
+{
+	int src_fd, dest_fd;
+	ssize_t num_read, num_written;
+	char buffer[1024];
 
-    src_fd = open(src_file, O_RDONLY);
-    if (src_fd == -1)
-        handle_error("Can't read from source file");
+	src_fd = open(src_file, O_RDONLY);
+	if (src_fd == -1)
+		handle_error("Can't read from source file");
 
-    dest_fd = open(dest_file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
-    if (dest_fd == -1) {
-        close(src_fd);
-        handle_error("Can't write to destination file");
-    }
+	dest_fd = open(dest_file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	if (dest_fd == -1)
+	{
+		close(src_fd);
+		handle_error("Can't write to destination file");
+	}
 
-    while ((num_read = read(src_fd, buffer, sizeof(buffer))) > 0) {
-        num_written = write(dest_fd, buffer, num_read);
-        if (num_written != num_read) {
-            close(src_fd);
-            close(dest_fd);
-            handle_error("Write error");
-        }
-    }
+	while ((num_read = read(src_fd, buffer, sizeof(buffer))) > 0)
+	{
+		num_written = write(dest_fd, buffer, num_read);
+		if (num_written != num_read)
+		{
+			close(src_fd);
+			close(dest_fd);
+			handle_error("Write error");
+		}
+	}
 
-    if (num_read == -1) {
-        close(src_fd);
-        close(dest_fd);
-        handle_error("Read error");
-    }
+	if (num_read == -1)
+	{
+		close(src_fd);
+		close(dest_fd);
+		handle_error("Read error");
+	}
 
-    if (close(src_fd) == -1 || close(dest_fd) == -1)
-        handle_error("Can't close file descriptor");
+	if (close(src_fd) == -1 || close(dest_fd) == -1)
+		handle_error("Can't close file descriptor");
 
-    return (0);
+	return (0);
 }
 
 /**
