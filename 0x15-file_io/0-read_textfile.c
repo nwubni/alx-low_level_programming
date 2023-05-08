@@ -28,6 +28,6 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	free(ch);
 	close(fd);
 
-	return (bytes_read);
+	return (bytes_written);
 }
 
