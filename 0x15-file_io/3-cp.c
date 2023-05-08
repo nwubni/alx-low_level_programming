@@ -1,16 +1,58 @@
 #include "main.h"
 
 /**
-* print_error - Displays error message
-* @message: Error message
-* @arg: Argument
+* handle_error - Displays error message
+* @msg: Error message
 * Return: void
 */
 
-void print_error(const char *message, const char *arg)
+void handle_error(const char *msg)
 {
-	dprintf(STDERR_FILENO, message, arg);
-	exit(EXIT_FAILURE);
+	fprintf(stderr, "Error: %s\n", msg);
+	exit(1);
+}
+
+/**
+* copy_file - Copies file from source to destination
+* @src_file: Source file
+* @dest_file: Destination file
+* Return: Integer
+*/
+
+int copy_file(const char *src_file, const char *dest_file) {
+    int src_fd, dest_fd;
+    ssize_t num_read, num_written;
+    char buffer[1024];
+
+    src_fd = open(src_file, O_RDONLY);
+    if (src_fd == -1)
+        handle_error("Can't read from source file");
+
+    dest_fd = open(dest_file, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+    if (dest_fd == -1) {
+        close(src_fd);
+        handle_error("Can't write to destination file");
+    }
+
+    while ((num_read = read(src_fd, buffer, sizeof(buffer))) > 0) {
+        num_written = write(dest_fd, buffer, num_read);
+        if (num_written != num_read) {
+            close(src_fd);
+            close(dest_fd);
+            handle_error("Write error");
+        }
+    }
+
+    if (num_read == -1) {
+        close(src_fd);
+        close(dest_fd);
+        handle_error("Read error");
+    }
+
+    if (close(src_fd) == -1 || close(dest_fd) == -1)
+        handle_error("Can't close file descriptor");
+
+    return (0);
 }
 
 /**
@@ -22,40 +64,14 @@ void print_error(const char *message, const char *arg)
 
 int main(int argc, char *argv[])
 {
-	int fd_from, fd_to, nread, nwrite;
-	const int BUF_SIZE = 1024;
-	char buffer[BUF_SIZE];
-
 	if (argc != 3)
-		print_error("Usage: cp file_from file_to\n", "");
-
-	fd_from = open(argv[1], O_RDONLY);
-
-	if (fd_from == -1)
-		print_error("Error: Can't read from file %s\n", argv[1]);
-
-	fd_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
-
-	if (fd_to == -1)
-		print_error("Error: Can't write to %s\n", argv[2]);
-
-	while ((nread = read(fd_from, buffer, BUF_SIZE)) > 0)
 	{
-		nwrite = write(fd_to, buffer, nread);
-
-		if (nwrite == -1)
-			print_error("Error: Can't write to %s\n", argv[2]);
+		fprintf(stderr, "Usage: cp file_from file_to\n");
+		return (1);
 	}
 
-	if (nread == -1)
-		print_error("Error: Can't read from file %s\n", argv[1]);
+	copy_file(argv[1], argv[2]);
 
-	if (close(fd_from) == -1)
-		print_error("Error: Can't close fd %d\n", fd_from);
-
-	if (close(fd_to) == -1)
-		print_error("Error: Can't close fd %d\n", fd_to);
-
-	exit(EXIT_SUCCESS);
+	return (0);
 }
 
