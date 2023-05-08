@@ -22,7 +22,7 @@ void handle_error(const char *msg, int exit_code)
 
 int copy_file(const char *src_file, const char *dest_file)
 {
-	int src_fd, dest_fd;
+	int src_fd, dest_fd, close;
 	ssize_t num_read, num_written;
 	char buffer[1024];
 
@@ -56,8 +56,21 @@ int copy_file(const char *src_file, const char *dest_file)
 		}
 	}
 
-	if (close(src_fd) == -1 || close(dest_fd) == -1)
-		handle_error("Can't close fd", 100);
+	close = close(src_fd);
+
+	if (close== -1)
+	{		
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", src_fd);
+		exit(100);
+	}
+
+	close = close(dest_fd);
+
+	if (close== -1)
+	{		
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", dest_fd);
+		exit(100);
+	}
 
 	return (0);
 }
