@@ -4,7 +4,7 @@
 * get_value - Gets key value in linked list
 * @h: Head of linked list
 * @key: Key to retreive its value
-* Return: Size of linked list
+* Return: String value
 */
 
 char *get_value(const hash_node_t *h, const char *key)
