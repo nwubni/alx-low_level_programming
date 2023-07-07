@@ -33,6 +33,9 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 {
 	unsigned long int index = key_index((unsigned char *)key, ht->size);
 
+	if (!ht || !key)
+		return (NULL);
+
 	return (get_value(ht->array[index], key));
 }
 

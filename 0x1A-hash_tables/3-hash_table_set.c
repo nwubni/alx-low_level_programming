@@ -60,7 +60,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	unsigned long int index;
 	hash_node_t *exists = NULL;
 
-	if (!key || *key == '\0' || strlen(key) == 0)
+	if (!ht || !key || strlen(key) == 0)
 		return (0);
 
 	index = key_index((unsigned char *)key, ht->size);
@@ -69,6 +69,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	if (exists)
 	{
+		free(exists->value);
 		exists->value = strdup(value);
 		return (1);
 	}
