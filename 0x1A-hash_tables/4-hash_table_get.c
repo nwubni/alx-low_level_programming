@@ -31,10 +31,12 @@ char *get_value(const hash_node_t *h, const char *key)
 
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
-	unsigned long int index = key_index((unsigned char *)key, ht->size);
+	unsigned long int index;
 
-	if (!ht || !key)
+	if (!ht || !key || strlen(key) == 0)
 		return (NULL);
+
+	index = key_index((unsigned char *)key, ht->size);
 
 	return (get_value(ht->array[index], key));
 }
