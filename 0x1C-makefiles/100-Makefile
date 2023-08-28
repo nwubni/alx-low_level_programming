@@ -1,0 +1,26 @@
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -pedantic
+SRC = main.c utils.c file.c
+NAME = school
+CFILES = $(wildcard *.c)
+OBJ = $(CFILES:.c=.o)
+RM_ONCE = $(RM) $(NAME) *~ 
+RM_TWICE = $(RM_ONCE) $(OBJ)
+
+all: $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
+
+$(OBJ): %.o: %.c m.h
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+clean:
+	$(RM_ONCE)
+
+oclean:
+	$(RM) $(OBJ)
+
+fclean: clean
+	$(RM) $(OBJ)
+
+re: fclean all
+
