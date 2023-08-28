@@ -1,7 +1,11 @@
 #!/usr/bin/python3
 
+"""Finds perimeter of island"""
+
 
 def island_perimeter(grid):
+    """A function that finds perimeter of island"""
+
     M = len(grid)
     N = len(grid[0])
     perimeter = 0
