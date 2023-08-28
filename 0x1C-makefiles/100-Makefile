@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -pedantic
-SRC = main.c utils.c file.c
+SRC = main.c school.c
 NAME = school
 CFILES = $(wildcard *.c)
 OBJ = $(CFILES:.c=.o)
