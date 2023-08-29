@@ -3,10 +3,12 @@ CFLAGS = -Wall -Werror -Wextra -pedantic
 SRC = main.c school.c
 NAME = school
 OBJ = $(SRC:.c=.o)
-RM_ONCE = $(RM) $(NAME) *~ 
+RM_ONCE = $(RM) *~ 
+
+.PHONY: all clean oclean fclean re
 
 all: $(OBJ) m.h
-	$(CC) $(SRC) -o $(OBJ)
+	$(CC) $(NAME) -o $(OBJ)
 
 clean:
 	$(RM_ONCE) $(NAME)
@@ -16,5 +18,5 @@ oclean:
 
 fclean: clean oclean
 
-re: oclean all
+re: fclean all
 
